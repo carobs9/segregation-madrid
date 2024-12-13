@@ -1,7 +1,24 @@
 # Understanding the role of mobility in segregation patterns in the city of Madrid
-Thesis project to understand the role of mobility in segregation patterns in the city of Madrid.
 
 This study explores the relationship between income inequality and urban mobility in the city of Madrid. Literature shows that bringing mobility into the study of inequality and segregation can bring an extra dimension to its study. By using a granular mobility dataset of trips throughout a month of 2022, a series of methods are developed to measure which districts play a central role in pulling and pushing travellers, and to measure which income groups travel more, and longer distances within the city. This research provides insights on the ongoing income segregation patterns in Madrid, and identifies slightly homophilic travelling tendencies. It also reveals that lower income groups tend to travel more and longer on average than higher income groups. This research contributes to the field of urban studies and emerging fields like Science of Cities or Urban Data Science, and aims to aid policymakers to identify mobility isolated areas in the urban space to develop effective policies to reduce the negative effects of gentrification and segregation.
+
+The main research question driving my research is:
+
+>  To what extent do residents from economically segregated districts in Madrid move differently than those in other districts?
+
+To answer this question, I developed the following hypotheses to guide research:
+
+> Low-income and highly segregated districts push residents out for daily mobility purposes, like work or recreational, whereas high-income and low segregated districts pull residents, as these districts tend to offer higher amenities and work possibilities.
+> Residents from low-income and highly segregated districts tend to make a higher number of trips to high-income and low segregated districts than vice versa.
+> Residents from low-income and highly segregated districts tend to perform, on average, longer distance trips than those living in high-income and low segregated districts.
+
+## Methods
+
+TODO
+
+## Results
+
+TODO
 
 ## Installation
 
@@ -33,9 +50,7 @@ This study explores the relationship between income inequality and urban mobilit
 
 Pyproj package is giving problems with the CRS.
 
-## Order of the scripts
-
-# Script Execution Order and Descriptions
+## Script Execution Order and Descriptions
 
 | Order | Folder              | Script Name               | Description                                                                 |
 |-------|---------------------|---------------------------|-----------------------------------------------------------------------------|
@@ -53,3 +68,6 @@ Pyproj package is giving problems with the CRS.
 | 12    | network          | visualization.py         | Generates visualizations of the previously built graph as html.   |
 
 
+## Configuration Variables
+
+TODO
