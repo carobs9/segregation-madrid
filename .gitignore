@@ -22,6 +22,5 @@
 *.graphml
 */lib
 # Ignore the virtual environment directories
-
 .segregation_madrid_env/
 
