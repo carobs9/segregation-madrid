@@ -30,7 +30,7 @@ Pyproj package is giving problems with the CRS.
 ## Order of the scripts
 
 | Folder | File 1 | File 2 | File 3 |
-| --- | --- |
+| --- | --- | --- | --- |
 | mobility_data | get_viajes.py | get_geometrias.py | ... |
 | data_overview | main_descriptives.py  | viajes_stats.py | ... |
 | segregation_indices | preprocessing.py  | assortativity_matrix.py| morans_i.py |
