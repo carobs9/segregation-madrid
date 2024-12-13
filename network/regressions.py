@@ -19,8 +19,8 @@ else:
     file_name = 'default_file.csv'  # FIXME: Fallback option if neither is True
 
 # load graph object from file
-G = pickle.load(open(f'graphs/{file_name}.pickle', 'rb')) # TAKING THE NETWORK WITH NORMALIZED WEIGHTS , FIXED
-income = gpd.read_file('/Users/caro/Desktop/thesis_project/segregation_indices/data/processed/geometries_and_income.geojson')
+G = pickle.load(open(cfg.ROOT_PATH / f'network/graphs/{file_name}.pickle', 'rb')) # TAKING THE NETWORK WITH NORMALIZED WEIGHTS , FIXED
+income = gpd.read_file(cfg.ROOT_PATH / 'segregation_indices/data/processed/geometries_and_income.geojson')
 
 in_weights = check_in_weights(G)
 out_weights = check_out_weights(G)
@@ -28,8 +28,8 @@ out_weights = check_out_weights(G)
 in_weights_df = pd.DataFrame(list(in_weights.items()), columns=['District', 'Total In-weight'])
 out_weights_df = pd.DataFrame(list(out_weights.items()), columns=['District', 'Total Out-weight'])
 
-in_weights_df.to_csv(f'weights/{cfg.type_of_study}_in_weights.csv', index=False)
-out_weights_df.to_csv(f'weights/{cfg.type_of_study}_out_weights.csv', index=False)
+in_weights_df.to_csv(cfg.ROOT_PATH / f'network/weights/{cfg.type_of_study}_in_weights.csv', index=False)
+out_weights_df.to_csv(cfg.ROOT_PATH / f'network/weights/{cfg.type_of_study}_out_weights.csv', index=False)
 
 in_weights_df['Median income per consumption unit'] = income['Median income per consumption unit'] / 1000
 in_weights_df['Gini Index'] = income['Gini Index']
@@ -51,7 +51,7 @@ model = sm.OLS(y, X).fit()
 # Step 4: Display the regression results
 print(model.summary())
 
-with open(f'regressions/{cfg.type_of_study}_in_weight_median.html', 'w') as file:
+with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_in_weight_median.html', 'w') as file:
     file.write(model.summary().as_html())
 
 
@@ -69,7 +69,7 @@ model = sm.OLS(y, X).fit()
 # Step 4: Display the regression results
 print(model.summary())
 
-with open(f'regressions/{cfg.type_of_study}_out_weight_median.html', 'w') as file:
+with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_out_weight_median.html', 'w') as file:
     file.write(model.summary().as_html())
 
 
@@ -87,7 +87,7 @@ model = sm.OLS(y, X).fit()
 # Step 4: Display the regression results
 print(model.summary())
 
-with open(f'regressions/{cfg.type_of_study}_in_weight_gini.html', 'w') as file:
+with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_in_weight_gini.html', 'w') as file:
     file.write(model.summary().as_html())
 
 # MODEL 4 ------------------------------------------------------------------------------------------------------------------------------
@@ -104,5 +104,5 @@ model = sm.OLS(y, X).fit()
 # Step 4: Display the regression results
 print(model.summary())
 
-with open(f'regressions/{cfg.type_of_study}_out_weight_gini.html', 'w') as file:
+with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_out_weight_gini.html', 'w') as file:
     file.write(model.summary().as_html())

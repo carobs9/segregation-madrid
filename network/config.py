@@ -23,3 +23,5 @@ DATASETS_PATH = ROOT_PATH / 'datasets'
 
 # Set time of study
 type_of_study = 'month' # 'week', 'weekend', 'month' or 'morans', or 'two_weeks'
+
+SAVE_FIGURES = True

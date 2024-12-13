@@ -20,7 +20,7 @@ elif cfg.type_of_study == 'weekend':
 else:
     file_name = 'default_file.csv'  # FIXME: Fallback option if neither is True
 
-merged = gpd.read_file(cfg.ROOT_PATH / 'segregation_indices/data/geometries_and_income.geojson') 
+merged = gpd.read_file(cfg.ROOT_PATH / 'segregation_indices/data/geometries_and_income.geojson') # merging processed done at 'preprocessing'
 distritos = pd.read_csv(cfg.ZONIFICACION_DATA / 'distritos/PROCESSED_nombres_distritos.csv')
 
 all_viajes = pd.read_csv(cfg.MOBILITY_DATA / f'VIAJES/{file_name}', thousands='.', decimal=',') #df of interest
