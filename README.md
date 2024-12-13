@@ -9,7 +9,9 @@ The main research question driving my research is:
 To answer this question, I developed the following hypotheses to guide research:
 
 > Low-income and highly segregated districts push residents out for daily mobility purposes, like work or recreational, whereas high-income and low segregated districts pull residents, as these districts tend to offer higher amenities and work possibilities.
+
 > Residents from low-income and highly segregated districts tend to make a higher number of trips to high-income and low segregated districts than vice versa.
+
 > Residents from low-income and highly segregated districts tend to perform, on average, longer distance trips than those living in high-income and low segregated districts.
 
 ## Methods
