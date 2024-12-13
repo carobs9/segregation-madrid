@@ -1,0 +1,20 @@
+pandas
+geopandas
+numpy
+statsmodels
+# segregation measures
+libpysal
+esda
+splot
+# plotting
+plotly
+seaborn
+matplotlib
+contextily
+mapclassify
+# unknown
+nbformat>=4.2.0
+#for graphs
+pyproj
+Fiona
+netwulf
