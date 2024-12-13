@@ -16,5 +16,4 @@ mapclassify
 nbformat>=4.2.0
 #for graphs
 pyproj
-Fiona
-netwulf
+pyvis
