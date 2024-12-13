@@ -73,3 +73,22 @@ Pyproj package is giving problems with the CRS.
 ## Configuration Variables
 
 TODO
+
+
+## Network
+
+legend_html = """
+<div style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%);
+            background-color: #222; color: white; padding: 15px; border-radius: 5px; text-align: center;">
+  <h4 style="margin: 10px 0;">Income Scale</h4>
+  <div style="position: relative; width: 20px; height: 200px; background: linear-gradient(to bottom, #67001f, #f4a582, #f7f4f9); margin: 20px auto;">
+    <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 12px;">High</span>
+    <span style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 12px;">Low</span>
+  </div>
+</div>
+"""
+# Add the legend HTML at the end of the body
+net = net.replace("</body>", legend_html + "</body>")
+
+with open("htmls/labels_02_threshold.html", "w") as f:
+    f.write(net)
