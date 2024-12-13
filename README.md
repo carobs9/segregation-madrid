@@ -80,4 +80,4 @@ TODO
 
 You can view the network visualization by clicking the link below:
 
-[View Network Visualization](network/htmls/labels_02_threshold.html)
+[View Network Visualization](https://carobs9.neocities.org/no_threshold)
