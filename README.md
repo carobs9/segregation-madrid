@@ -7,22 +7,28 @@ This study explores the relationship between income inequality and urban mobilit
 
 - Install Python (version 3.11 was used for this development).
 - Clone the repository from terminal (Git must be installed):
-
-git clone https://...
+     ```
+      git clone https://...
+     ```
 
 - To activate the environment, run:
-    - On Mac: 
-    '''source ./<your_env_name>/bin/activate'''
+    - On Mac:
+      ```
+      source ./<your_env_name>/bin/activate
+      ```
     - On Windows:
-     '''./<your_env_name>/Scripts/activate'''
+      ```
+      ./<your_env_name>/Scripts/activate
+      ```
     - On Linux:
-     '''./<your_env_name>/bin/activate'''
+       ```
+      ./<your_env_name>/bin/activate
+      ```
 
 - To Install the dependencies:
-'''
-pip install -r requirements.txt
-'''
-
+       ```
+      pip install -r requirements.txt
+      ```
 ## Known Issues
 
 Pyproj package is giving problems with the CRS.
@@ -37,22 +43,3 @@ Pyproj package is giving problems with the CRS.
 | trip_analysis | trip_count.py  | trip_distances.py  ... |
 | clustering | get_graph.py  | regressions.py | visualization |
 
-
-mobility_data:
-    1. get_viajes.py 
-    2. get_geometrias.py
-
-data_overview:
-    1. main_descriptives.py (fix)
-    2. viajes_stats.py (fix)
-
-segregation_indices:
-
-trip_analysis:
-    1. trip_analysis
-
-clustering:
-    1. get_graph.py
-    2. regressions.py
-    3. visualization.py
- 
