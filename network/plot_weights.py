@@ -45,40 +45,46 @@ in_weights_gdf = gpd.GeoDataFrame(in_weights_gdf, geometry='geometry')
 out_weights_gdf = pd.merge(out_weights_df, distritos_and_gdf, on='District', how='inner')
 out_weights_gdf = gpd.GeoDataFrame(out_weights_gdf, geometry='geometry')
 
-fig, ax = plt.subplots(1, figsize=(6, 6))
+vmin = min(in_weights_gdf['Total In-weight'].min(), out_weights_gdf['Total Out-weight'].min())
+vmax = max(in_weights_gdf['Total In-weight'].max(), out_weights_gdf['Total Out-weight'].max())
+
+# Plot In-Weights
+fig, axes = plt.subplots(1, 2, figsize=(12, 6))  # Create side-by-side plots
+
+# In-Weight plot
 in_weights_gdf.plot(
-        column='Total In-weight',  # Column containing the LISA values
-        cmap='RdPu',        # Use the RdPu colormap
-        legend=True,            # Show legend
-        ax=ax                   # Axis to plot on
-    )
-    
-    # Set the title with global statistics
-ax.set_title('In-Weight Distribution'
-    )
+    column='Total In-weight',  # Column containing the LISA values
+    cmap='RdPu',               # Use the RdPu colormap
+    legend=True,               # Show legend
+    ax=axes[0],                # Axis to plot on (left)
+    vmin=vmin,                 # Set common minimum value for scale
+    vmax=vmax                  # Set common maximum value for scale
+)
+axes[0].set_title('In-Weight Distribution')  # Title for In-Weight
+axes[0].set_axis_off()  # Remove axis labels
 
-    # Remove axis labels
-ax.set_axis_off()
-fig.show()
-
+# Save the In-Weight figure if required
 if cfg.SAVE_FIGURES:
-        plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_in_weight_distribution.png', dpi=300, bbox_inches='tight')
+    plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_in_weight_distribution.png', dpi=300, bbox_inches='tight')
 
-fig, ax = plt.subplots(1, figsize=(6, 6))
+# Out-Weight plot
 out_weights_gdf.plot(
-        column='Total Out-weight',  # Column containing the LISA values
-        cmap='RdPu',        # Use the RdPu colormap
-        legend=True,            # Show legend
-        ax=ax                   # Axis to plot on
-    )
-    
-    # Set the title with global statistics
-ax.set_title('Out-Weight Distribution'
-    )
+    column='Total Out-weight',  # Column containing the LISA values
+    cmap='RdPu',               # Use the same colormap for consistency
+    legend=True,               # Show legend
+    ax=axes[1],                # Axis to plot on (right)
+    vmin=vmin,                 # Set common minimum value for scale
+    vmax=vmax                  # Set common maximum value for scale
+)
+axes[1].set_title('Out-Weight Distribution')  # Title for Out-Weight
+axes[1].set_axis_off()  # Remove axis labels
 
-    # Remove axis labels
-ax.set_axis_off()
-fig.show()
+# Adjust layout to avoid overlapping legends
+plt.tight_layout()
 
+# Save the Out-Weight figure if required
 if cfg.SAVE_FIGURES:
-        plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_out_weight_distribution.png', dpi=300, bbox_inches='tight')
+    plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_weight_distribution.png', dpi=300, bbox_inches='tight')
+
+# Show the combined figure
+plt.show()
