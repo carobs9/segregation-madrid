@@ -88,16 +88,16 @@ Pyproj package is giving problems with the CRS.
 |-------|---------------------|---------------------------|-----------------------------------------------------------------------------|
 | 1     | mobility_data       | get_viajes.py            | Extracts raw trip data from MITMA and formats it into a usable dataset for analysis. Different variables can be selected to either download a monthly sample or a smaller one.  |
 | 2     | mobility_data       | get_geometrias.py        | Retrieves and cleans the Madrid city geometries and their respective names. |
-| 3     | data_overview       | main_descriptives.py     | Generates general descriptive statistics and summary plots for the income data, city landscape and segregation measures. |
-| 4     | data_overview       | viajes_stats.py          | Computes trip-level statistics.  |
-| 5     | segregation_indices | preprocessing.py         | Cleans and prepares data for segregation measures.               |
-| 6     | segregation_indices | assortativity_matrix.py  | Constructs the assortativity matrices used to measure mixing across income deciles. The median income per consumption unit and the Gini index variables can be selected to generate the deciles.|
-| 7     | segregation_indices | morans_i.py              | Calculates local and global Moran's I to measure spatial autocorrelation of income levels. The income variables of interest can be selected. |
-| 8     | trip_analysis       | trip_count.py            | Computes and analyzes trip counts across districts based on median income and Gini index districts of residence to detect patterns. Outputs the trip count dataset and the shares of trips from low to high quantiles and vice versa.|
-| 9     | trip_analysis       | trip_distances.py        | Computes and visualizes trip distances to analyze mobility patterns based on the median income and Gini index quantiles of residence of individuals. |
-| 10    | network          | get_graph.py             | Builds a graph structure from mobility data for clustering analysis. It outputs the graph in pickle format, an adjacency matrix displayed as a heatmap, and the adjacency matrix displayed as a numpy file.  |
-| 11    | network          | regressions.py           | Runs regression models to analyze relationships between in-weight, out-weight and the variables of interest: median income per consumption unit and the Gini index. |
-| 12    | network          | visualization.py         | Generates visualizations of the previously built graph as html.   |
+| 3     | segregation_indices | preprocessing.py         | Cleans and prepares data for segregation measures.               |
+| 4     | segregation_indices | assortativity_matrix.py  | Constructs the assortativity matrices used to measure mixing across income deciles. The median income per consumption unit and the Gini index variables can be selected to generate the deciles.|
+| 5     | segregation_indices | morans_i.py              | Calculates local and global Moran's I to measure spatial autocorrelation of income levels. The income variables of interest can be selected. |
+| 6     | trip_analysis       | trip_count.py            | Computes and analyzes trip counts across districts based on median income and Gini index districts of residence to detect patterns. Outputs the trip count dataset and the shares of trips from low to high quantiles and vice versa.|
+| 7     | trip_analysis       | trip_distances.py        | Computes and visualizes trip distances to analyze mobility patterns based on the median income and Gini index quantiles of residence of individuals. |
+| 8    | network          | get_graph.py             | Builds a graph structure from mobility data for clustering analysis. It outputs the graph in pickle format, an adjacency matrix displayed as a heatmap, and the adjacency matrix displayed as a numpy file.  |
+| 9    | network          | regressions.py           | Runs regression models to analyze relationships between in-weight, out-weight and the variables of interest: median income per consumption unit and the Gini index. |
+| 10    | network          | visualization.py         | Generates visualizations of the previously built graph as html.   |
+| 11    | data_overview       | main_descriptives.py     | Generates general descriptive statistics and summary plots for the income data, city landscape and segregation measures. |
+| 12    | data_overview       | viajes_stats.py          | Computes trip-level statistics.  |
 
 
 ## Configuration Variables
