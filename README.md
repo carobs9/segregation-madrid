@@ -80,4 +80,4 @@ TODO
 
 You can view the network visualization by clicking the link below:
 
-[View Network Visualization](https://carobs9.neocities.org/no_threshold)
+[View Network of Madrid](https://carobs9.neocities.org/no_threshold)
