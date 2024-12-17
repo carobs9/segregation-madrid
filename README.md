@@ -16,8 +16,7 @@ To answer this question, I developed the following hypotheses to guide research:
 
 You can read the paper by clicking the link below:
 
-[Paper](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://carobs9.neocities.org/thesis_final_dec_17.pdf)
-[View Network of Madrid](https://carobs9.neocities.org/no_threshold)
+[Paper](https://carobs9.neocities.org/thesis_final_dec_17.pdf)
 
 ## Methods and Results
 
