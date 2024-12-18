@@ -42,17 +42,28 @@ out_weights_df['Gini Index'] = income['Gini Index']
 X = in_weights_df['Median income per consumption unit']
 y = in_weights_df['Total In-weight']
 
-# Add a constant (intercept) to the model
 X = sm.add_constant(X)
 
-# Step 3: Fit the regression model
 model = sm.OLS(y, X).fit()
 
-# Step 4: Display the regression results
 print(model.summary())
 
 with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_in_weight_median.html', 'w') as file:
     file.write(model.summary().as_html())
+
+fix, ax = plt.subplots()
+ax.scatter(in_weights_df['Median income per consumption unit'], model.predict(), alpha=0.5,
+        label='predicted')
+
+ax.scatter(in_weights_df['Median income per consumption unit'], in_weights_df['Total In-weight'], alpha=0.5,
+        label='observed')
+
+ax.legend()
+ax.set_title('OLS: Median Income and In-Weight')
+ax.set_xlabel('median income')
+ax.set_ylabel('in weight')
+if cfg.SAVE_FIGURES:
+    plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_regression_median_inweight.png', dpi=300, bbox_inches='tight')
 
 
 # MODEL 2 ------------------------------------------------------------------------------------------------------------------------------
@@ -60,17 +71,28 @@ with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_in_weight_me
 X = out_weights_df['Median income per consumption unit']
 y = out_weights_df['Total Out-weight']
 
-# Add a constant (intercept) to the model
 X = sm.add_constant(X)
 
-# Step 3: Fit the regression model
 model = sm.OLS(y, X).fit()
 
-# Step 4: Display the regression results
 print(model.summary())
 
 with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_out_weight_median.html', 'w') as file:
     file.write(model.summary().as_html())
+
+fix, ax = plt.subplots()
+ax.scatter(out_weights_df['Median income per consumption unit'], model.predict(), alpha=0.5,
+        label='predicted')
+
+ax.scatter(out_weights_df['Median income per consumption unit'], out_weights_df['Total Out-weight'], alpha=0.5,
+        label='observed')
+
+ax.legend()
+ax.set_title('OLS: Median Income and Out-Weight')
+ax.set_xlabel('median income')
+ax.set_ylabel('out weight')
+if cfg.SAVE_FIGURES:
+    plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_regression_median_outweight.png', dpi=300, bbox_inches='tight')
 
 
 # MODEL 3 ------------------------------------------------------------------------------------------------------------------------------
@@ -78,31 +100,53 @@ with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_out_weight_m
 X = in_weights_df['Gini Index']
 y = in_weights_df['Total In-weight']
 
-# Add a constant (intercept) to the model
 X = sm.add_constant(X)
 
-# Step 3: Fit the regression model
 model = sm.OLS(y, X).fit()
 
-# Step 4: Display the regression results
 print(model.summary())
 
 with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_in_weight_gini.html', 'w') as file:
     file.write(model.summary().as_html())
+
+fix, ax = plt.subplots()
+ax.scatter(in_weights_df['Gini Index'], model.predict(), alpha=0.5,
+        label='predicted')
+
+ax.scatter(in_weights_df['Gini Index'], in_weights_df['Total In-weight'], alpha=0.5,
+        label='observed')
+
+ax.legend()
+ax.set_title('OLS: Gini Index and In-Weight')
+ax.set_xlabel('gini index')
+ax.set_ylabel('in weight')
+if cfg.SAVE_FIGURES:
+    plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_regression_gini_inweight.png', dpi=300, bbox_inches='tight')
 
 # MODEL 4 ------------------------------------------------------------------------------------------------------------------------------
 
 X = out_weights_df['Gini Index']
 y = out_weights_df['Total Out-weight']
 
-# Add a constant (intercept) to the model
 X = sm.add_constant(X)
 
-# Step 3: Fit the regression model
 model = sm.OLS(y, X).fit()
 
-# Step 4: Display the regression results
 print(model.summary())
 
 with open(cfg.ROOT_PATH / f'network/regressions/{cfg.type_of_study}_out_weight_gini.html', 'w') as file:
     file.write(model.summary().as_html())
+
+fix, ax = plt.subplots()
+ax.scatter(out_weights_df['Gini Index'], model.predict(), alpha=0.5,
+        label='predicted')
+
+ax.scatter(out_weights_df['Gini Index'], out_weights_df['Total Out-weight'], alpha=0.5,
+        label='observed')
+
+ax.legend()
+ax.set_title('OLS: Gini Index and Out-Weight')
+ax.set_xlabel('gini index')
+ax.set_ylabel('out weight')
+if cfg.SAVE_FIGURES:
+    plt.savefig(cfg.FIGURES_PATH / f'{cfg.type_of_study}_regression_gini_outweight.png', dpi=300, bbox_inches='tight')
