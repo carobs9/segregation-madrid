@@ -106,7 +106,15 @@ Pyproj package is giving problems with the CRS.
 
 ## Configuration Variables
 
-TODO
+| Variable Name | Options              |
+|-------|---------------------|
+| DF_OF_INTEREST | String of the dataframe from MITMA |
+| MONTH_DAYS |List containing days of the month of interest|
+| type_of_study     | 'month', 'week', 'weekend', 'morans', 'two_weeks'. 'month' has been used to perform this study, and 'morans' when calculating the morans indices.| 
+| ROOT_PATH     | Root path as Path objet      | 
+| SAVE_DFS     | Boolean: True / False     | 
+| SAVE_FIGURES     | Boolean: True / False       | 
+| INCOME_VARS_OF_INTEREST     |     'Gini Index','Average income per consumption unit','Median income per consumption unit','Average gross income per household','Average gross income per person','Average net income per household','Average net income per person'     | 
 
 
 ## Network
