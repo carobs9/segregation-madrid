@@ -39,6 +39,8 @@ morans = pd.read_csv(cfg.ROOT_PATH / 'segregation_indices/outputs/global_morans_
 
 normalized_trip_counts = pd.read_csv(cfg.ROOT_PATH / f'trip_analysis/outputs/{cfg.type_of_study}_normalized_trip_count.csv')
 
+origin_trips = filtered_viajes.groupby('origen')['viajes'].sum().reset_index(name='total_viajes') 
+
 # PLOTTING INCOME QUANTILES -----------------------------------------------------------------------------------------------
 
 f, axs = plt.subplots(nrows=2, ncols=3, figsize=(14, 14))
@@ -269,4 +271,30 @@ plt.xlabel('Total Trip Count')
 plt.ylabel('Density')
 plt.tight_layout()
 plt.savefig(f'{cfg.FIGURES_PATH}/{cfg.type_of_study}_unnormalized_trip_count_distribution.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+# TRIPS AND POPULATION -------------------------------------------------------------------------------------------------
+
+distritos_and_pop["ID"] = distritos_and_pop["ID"].astype(str)
+origin_trips["origen"] = origin_trips["origen"].astype(str)
+
+df_combined = pd.merge(distritos_and_pop, origin_trips, left_on="ID", right_on="origen")
+df_combined.drop(columns=["ID", "origen"], inplace=True)
+
+df_combined["Population_normalized"] = df_combined["Population"] / df_combined["Population"].max()
+df_combined["Viajes_normalized"] = df_combined["total_viajes"] / df_combined["total_viajes"].max()
+
+plt.figure(figsize=(14, 8))
+
+plt.bar(df_combined["name_2"], df_combined["Population_normalized"], label="Population (normalised)", alpha=0.7)
+
+plt.plot(df_combined["name_2"], df_combined["Viajes_normalized"], label="Total Trips (normalised)", color="red", marker="o")
+
+plt.title("Comparison of Population and Total Trips by District", fontsize=16)
+plt.xlabel("District", fontsize=14)
+plt.ylabel("Normalized Values", fontsize=14)
+plt.xticks(rotation=45, ha="right", fontsize=12)
+plt.legend()
+plt.tight_layout()
+plt.savefig(f'{cfg.FIGURES_PATH}/{cfg.type_of_study}_APPENDIX_pop_and_trips.png', dpi=300, bbox_inches='tight')
 plt.show()

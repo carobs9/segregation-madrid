@@ -32,14 +32,11 @@ def plot_and_save_var(df, var_name, palette, save_path):
     - palette: Color palette for the plot.
     - save_path: Path to save the figure.
     """
-    # Group by the variable and sum viajes
     grouped = df.groupby(var_name)['viajes'].sum().reset_index()
     grouped = grouped.sort_values(by='viajes', ascending=False)
 
-    # Create a new figure for each variable
     fig, ax = plt.subplots(figsize=(8, 6))
     
-    # Plotting the variable
     sns.barplot(
         x=grouped[var_name],
         y=grouped['viajes'],
@@ -50,27 +47,21 @@ def plot_and_save_var(df, var_name, palette, save_path):
     ax.set_xlabel(var_name.capitalize())
     ax.set_ylabel('Sum of Viajes')
     
-    # Ensure the directory exists
     save_path.parent.mkdir(parents=True, exist_ok=True)
     
-    # Save the figure
     fig.savefig(save_path, dpi=300, bbox_inches='tight')
     print(f"Figure saved to {save_path}")
     
-    # Close the plot to free memory
     plt.close(fig)
 
 print('Plotting and Saving')
 
-# Use a color palette for all plots
 palette = sns.color_palette("mako")
 
-# Plot and save filtered dataframe (only home-origin trips)
 for var in vars_to_plot:
     save_path = cfg.FIGURES_PATH / f'{var.lower()}_distribution_only_home_origin_{data_name.lower()}.png'
     plot_and_save_var(df, var, palette, save_path)
 
-# Plot and save unfiltered dataframe (including trips with a different origin than home)
 for var in vars_to_plot:
     save_path = cfg.FIGURES_PATH / f'{var.lower()}_distribution_{data_name.lower()}.png'
     plot_and_save_var(all_viajes, var, palette, save_path)
