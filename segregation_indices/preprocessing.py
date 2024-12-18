@@ -50,7 +50,7 @@ merged_2 = merged_2.set_crs(gdf.crs)
 # NOTE: The following lines of code fix issues with integers and decimals, but it is a last addition and might not work. Remove if needed
 merged_2['Gini Index'] = merged_2['Gini Index'].astype(float)
 
-# Convert the rest of the specified columns to integers
+# NOTE: Convert the rest of the specified columns to integers
 columns_to_fix = ['Average income per consumption unit', 'Average gross income per household',
                   'Average gross income per person', 'Average net income per household',
                   'Average net income per person', 'Median income per consumption unit']

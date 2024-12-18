@@ -6,7 +6,7 @@ import logging
 
 if cfg.METROPOLITAN==True:
 
-    df = pd.read_csv(r'C:\Users\rqg886\Desktop\thesis_project\segregation_indices\data\raw\income_madrid_metropolitan.csv', sep=';', encoding='latin8')
+    df = pd.read_csv(cfg.ROOT_PATH / 'segregation_indices/data/raw/income_madrid_metropolitan.csv', sep=';', encoding='latin8')
 
     nombres_distritos = pd.read_csv(cfg.ZONIFICACION_DATA / 'distritos/nombres_distritos.csv', sep = '|')
     poblacion_distritos = pd.read_csv(cfg.ZONIFICACION_DATA / 'distritos/poblacion_distritos.csv', sep = '|')
@@ -16,7 +16,7 @@ if cfg.METROPOLITAN==True:
     madrid_ccaa = nombres_distritos[nombres_distritos['ID'].str.startswith(id_code)] # filtering districts within Madrid Comunidad Autonoma
     metropolitan_districts = pd.merge(df, madrid_ccaa, on='ID', how='inner')
 
-    gdf = gpd.read_file(r'C:\Users\rqg886\Desktop\thesis_project\mobility_data\ZONIFICACION\distritos\zonificacion_distritos.shp') # all districts as polygons
+    gdf = gpd.read_file(cfg.ROOT_PATH / 'mobility_data/ZONIFICACION/distritos/zonificacion_distritos.shp') # all districts as polygons
     # centroides = gpd.read_file(cfg.ZONIFICACION_DATA / 'distritos/shapes/corrected_zonificacion_distritos_centroides.shp') # all districts as centroids
 
     metropolitan_gdf = gdf[gdf['ID'].isin(metropolitan_districts['ID'])] # building a gdf containing only districts in the city of Madrid
@@ -27,23 +27,19 @@ if cfg.METROPOLITAN==True:
 
 else:
 
-    # Configure general logger
     logger = logging.getLogger('my_logger')
     logger.setLevel(logging.DEBUG)  # Capture all messages from DEBUG and above
-
-    # Create a file handler for logging DEBUG and above messages to a file
     file_handler = logging.FileHandler('logs/get_geometrias.log')
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 
-    # Add the handler to the logger
     logger.addHandler(file_handler)
 
 
     nombres_distritos = pd.read_csv(cfg.ZONIFICACION_DATA / 'distritos/nombres_distritos.csv', sep = '|')
     poblacion_distritos = pd.read_csv(cfg.ZONIFICACION_DATA / 'distritos/poblacion_distritos.csv', sep = '|')
 
-    # FIXME: Filter more than Madrid districts by changing these lines
+    # NOTE: Filter more than Madrid districts by changing these lines
     id_code = '28'
     district_code = 'Madrid distrito'
     madrid_ccaa = nombres_distritos[nombres_distritos['ID'].str.startswith(id_code)] # filtering districts within Madrid Comunidad Autonoma

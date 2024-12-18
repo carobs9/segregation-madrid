@@ -42,17 +42,17 @@ def plot_assortativity_matrix(assortativity_matrix, name_of_figure, pearson=None
     plt.show()
 
 def calculate_assortativity_coefficient(normalized_matrix): 
-    # FIXME: Review this procedure! it might be very wrong, I am unsure about the math behind it
-    # Flatten the matrix and extract indices
+    # FIXME: Review this procedure!
+    # flatten the matrix and extract indices
     i_indices, j_indices = np.meshgrid(np.arange(normalized_matrix.shape[0]), 
                                     np.arange(normalized_matrix.shape[1]), 
                                     indexing='ij')
 
-    # Flatten the matrix and indices
+    # flatten matrix and indices
     i_indices_flat = i_indices.flatten()
     j_indices_flat = j_indices.flatten()
     matrix_flat = normalized_matrix.values.flatten()
 
-    # Calculate Pearson correlation coefficient
+    # Pearson correlation coefficient
     rho, p_value = pearsonr(i_indices_flat * j_indices_flat, matrix_flat)
     return rho, p_value

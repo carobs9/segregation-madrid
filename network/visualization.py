@@ -25,7 +25,7 @@ gdf = gpd.read_file(cfg.ZONIFICACION_DATA / 'distritos/madrid_gdf.geojson')  # f
 gdf = gdf.to_crs(epsg=4326)
 
 income['Gini Index Scaled'] = income['Gini Index'] # ** 2.5
-var_of_interest = 'Gini Index Scaled' # or 'Gini Index Scaled' or Median income per consumption unit
+var_of_interest = 'Gini Index Scaled' # 'Gini Index Scaled' or Median income per consumption unit
 
 district_counts = filtered_df['origen'].value_counts().reset_index()
 district_counts.columns = ['ID', 'Population']

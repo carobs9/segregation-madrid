@@ -95,13 +95,13 @@ elif var_of_interest == 'Gini Index':
 else:
     rent_data['income_decile'] = pd.qcut(rent_data[var_of_interest], n_income_deciles, labels=False)
 
-# Add deciles to dataframe
+# Add deciles to df
 viajes_with_income = pd.merge(viajes_with_income, rent_data[['ID', 'income_decile']], 
                               left_on='origen', right_on='ID', how='left', suffixes=('', '_origin'))
 
 viajes_with_income = pd.merge(viajes_with_income, rent_data[['ID', 'income_decile']], 
                               left_on='destino', right_on='ID', how='left', suffixes=('', '_dest'))
-# Clean dataframe 
+# Clean df 
 viajes_with_income.drop(columns=['residencia', 'estudio_origen_posible', 'estudio_origen_posible', 'ID', 'ID_origin', 'ID_dest'], inplace=True)
 
 # PLOT INCOME DECILES -----------------------------------------------------------------------------------------------
@@ -116,7 +116,6 @@ plt.ylabel('Number of Entries')
 plt.title(f'Distribution of Deciles for Destination of Trips\n{time_of_study}\nVariable: {var_of_interest.lower()}')
 
 if cfg.SAVE_FIGURES:
-    # fig.write_html(str(cfg.FIGURES_PATH / f'{var_of_interest.lower()}_deciles_distribution_destination.html'))
     plt.savefig(cfg.FIGURES_PATH / f'{var_of_interest.lower()}_deciles_distribution_destination.png', dpi=300, bbox_inches='tight')
     logger.info(f"Plot saved at: {cfg.FIGURES_PATH / f'{var_of_interest.lower()}_deciles_distribution_destination.png'}")
 
@@ -126,8 +125,7 @@ logger.info(f'Income deciles for {cfg.INCOME_VARS_OF_INTEREST} saved!')
 
 logger.info('Building assortativity matrices...')
 
-# Group by origin and destination deciles and count the trips. FIXME: Change here to focus on purpose of the trip instead of renta
-# trip_counts_by_decile = viajes_with_income.groupby(['renta', 'income_decile', 'income_decile_dest']).size().reset_index(name='trip_count') # OLD
+# Group by origin and destination deciles and count the trips
 trip_counts_by_decile = viajes_with_income.groupby(['renta', 'income_decile', 'income_decile_dest'])['viajes'].sum().reset_index(name='trip_count') # FIXED 
 districts = rent_data['ID'].unique()
 
@@ -140,7 +138,6 @@ try:
     ).fillna(0)
 
 except ValueError as e:
-    # If there's a ValueError (likely due to duplicate index/column pairs), fallback to pivot_table()
     logger.debug(f"Encountered an error with pivot(): {e}")
     logger.debug("Switching to pivot_table() to handle duplicates.")
     

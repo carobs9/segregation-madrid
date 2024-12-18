@@ -24,14 +24,14 @@ def open_gz(data_dir, days):
         A list of dataframes containing the concatenated data for the specified days.
     '''
     all_files = [f for f in os.listdir(data_dir) if f.endswith('.csv.gz')] # List all files in the directory and filter for .csv.gz files
-    all_files_sorted = sorted(all_files) # Sort the files list to ensure they are in chronological order
+    all_files_sorted = sorted(all_files) 
 
-    dfs = []  # Initialize a list to store DataFrames
-    for day in days: # Iterate over the list of days
-        file_to_open = all_files_sorted[day] # Select the file for the given day (day should be zero-based index)
-        file_path = os.path.join(data_dir, file_to_open)  # Create the full path to the file
-        df = pd.read_csv(file_path, compression='gzip', sep='|',decimal='.') # Read the compressed CSV file
-        dfs.append(df) # Append the DataFrame to the list
+    dfs = []  
+    for day in days: 
+        file_to_open = all_files_sorted[day] 
+        file_path = os.path.join(data_dir, file_to_open)  
+        df = pd.read_csv(file_path, compression='gzip', sep='|',decimal='.') 
+        dfs.append(df) 
     
     return dfs
 
@@ -52,26 +52,22 @@ def open_gz_by_district(data_dir, days, district_code=None):
     Returns:
         A list of dataframes containing the concatenated data for the specified days.
     '''
-    all_files = [f for f in os.listdir(data_dir) if f.endswith('.csv.gz')]  # List all files in the directory and filter for .csv.gz files
-    all_files_sorted = sorted(all_files)  # Sort the files list to ensure they are in chronological order
+    all_files = [f for f in os.listdir(data_dir) if f.endswith('.csv.gz')]  
+    all_files_sorted = sorted(all_files)  
 
-    dfs = []  # Initialize a list to store DataFrames
-    for day in days:  # Iterate over the list of days
-        file_to_open = all_files_sorted[day]  # Select the file for the given day (day should be zero-based index)
-        file_path = os.path.join(data_dir, file_to_open)  # Create the full path to the file
+    dfs = [] 
+    for day in days:  
+        file_to_open = all_files_sorted[day]  
+        file_path = os.path.join(data_dir, file_to_open)  
 
-        # Read the entire file into a DataFrame
         df = pd.read_csv(file_path, compression='gzip', sep='|', decimal='.')
 
-        # Convert 'origen' and 'destino' columns to strings, filling NaN values with empty strings
         df['origen'] = df['origen'].astype(str).fillna('')
         df['destino'] = df['destino'].astype(str).fillna('')
 
-        # If a district code is provided, filter the DataFrame
         if district_code:
             df = df[df['origen'].str.startswith(district_code) & df['destino'].str.startswith(district_code)]
 
-        # Append the filtered DataFrame to the list
         dfs.append(df)
 
     return dfs

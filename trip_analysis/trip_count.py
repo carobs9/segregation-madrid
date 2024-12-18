@@ -20,7 +20,7 @@ elif cfg.type_of_study == 'two_weeks':
     all_viajes = pd.read_csv(cfg.VIAJES_DATA / 'viajes_two_weeks_0322.csv', thousands='.',decimal=',')  # Subtracting trips in Madrid districts during 2 weeks
     data_name = 'Two Weeks'
 elif cfg.type_of_study == 'weekend':
-    all_viajes = pd.read_csv(cfg.VIAJES_DATA / 'viajes_weekend_0322.csv', thousands='.',decimal=',')  # Subtracting trips in Madrid districts during 2 weeks
+    all_viajes = pd.read_csv(cfg.VIAJES_DATA / 'viajes_weekend_0322.csv', thousands='.',decimal=',')  # Subtracting trips in Madrid districts during weekend
     data_name = 'Weekend'
 else:
     raise ValueError('No time of study has been set')
