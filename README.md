@@ -16,7 +16,7 @@ To answer this question, I developed the following hypotheses to guide research:
 
 You can read the paper by clicking the link below:
 
-[Paper](https://carobs9.neocities.org/thesis_final_dec_17.pdf)
+[Paper](https://carobs9.neocities.org/THESIS_FINAL_BRANAS.pdf)
 
 ## Methods and Results
 
