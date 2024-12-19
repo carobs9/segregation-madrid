@@ -116,6 +116,9 @@ Pyproj package is giving problems with the CRS.
 | SAVE_FIGURES     | Boolean: True / False       | 
 | INCOME_VARS_OF_INTEREST     |     'Gini Index','Average income per consumption unit','Median income per consumption unit','Average gross income per household','Average gross income per person','Average net income per household','Average net income per person'     | 
 
+## Known Issues
+
+The Pyproj CRS method gives problems based on the environment. It is not needed to replicate the study, so it has been commented out through the files. In addition, the Figures, Morans and Month directories need to be created by the user, as the directory is not created by running the code. In the future, this bug will be corrected.
 
 ## Network
 
