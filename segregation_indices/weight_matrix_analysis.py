@@ -62,5 +62,6 @@ ax.set_xlabel('Cardinality')
 ax.set_ylabel('Frequency')
 ax.set_title('Histogram of Cardinalities: Queen vs Rook Weight Matrices')
 ax.legend()
-
+if cfg.SAVE_FIGURES:
+    plt.savefig(cfg.FIGURES_PATH / f'weights_cardinalities.png', dpi=300, bbox_inches='tight')
 plt.show()

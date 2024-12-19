@@ -175,10 +175,11 @@ if cfg.SAVE_DATASETS:
     gini_and_districts.to_csv(cfg.DATASETS_PATH / 'districts_and_gini.csv', index=False)
 
 # GLOBAL MORANS I ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+morans_filtered = morans[morans['Variable'] != 'Gini Index']
 
-variables = morans['Variable']  # The income variables
-morans_I = morans['Global Morans I']  # The Global Moran's I values
-p_values = morans['P-value']  # The p-values
+variables = morans_filtered['Variable']  # The income variables
+morans_I = morans_filtered['Global Morans I']  # The Global Moran's I values
+p_values = morans_filtered['P-value']  # The p-values
 
 colors = ['purple' if p < 0.05 else 'black' for p in p_values]
 
