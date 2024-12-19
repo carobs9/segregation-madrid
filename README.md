@@ -82,9 +82,6 @@ I conclude that residents from the lowest median income quantile travel slightly
        ```
       pip install -r requirements.txt
       ```
-## Known Issues
-
-Pyproj package is giving problems with the CRS.
 
 ## Script Execution Order and Descriptions
 
