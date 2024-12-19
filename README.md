@@ -15,6 +15,7 @@ To answer this question, I developed the following hypotheses to guide research:
 > Residents from low-income and highly segregated districts tend to perform, on average, longer distance trips than those living in high-income and low segregated districts.
 
 You can read the paper by clicking the here: [Paper](https://carobs9.neocities.org/THESIS_FINAL_BRANAS.pdf)
+
 You can view the resulting mobility network by clicking here: [View Network of Madrid](https://carobs9.neocities.org/no_threshold)
 
 ## Methods and Results
