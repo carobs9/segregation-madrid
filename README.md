@@ -14,9 +14,8 @@ To answer this question, I developed the following hypotheses to guide research:
 
 > Residents from low-income and highly segregated districts tend to perform, on average, longer distance trips than those living in high-income and low segregated districts.
 
-You can read the paper by clicking the link below:
-
-[Paper](https://carobs9.neocities.org/THESIS_FINAL_BRANAS.pdf)
+You can read the paper by clicking the here: [Paper](https://carobs9.neocities.org/THESIS_FINAL_BRANAS.pdf)
+You can view the resulting mobility network by clicking here: [View Network of Madrid](https://carobs9.neocities.org/no_threshold)
 
 ## Methods and Results
 
@@ -119,10 +118,3 @@ Pyproj package is giving problems with the CRS.
 ## Known Issues
 
 The Pyproj CRS method gives problems based on the environment. It is not needed to replicate the study, so it has been commented out through the files. In addition, the Figures, Morans and Month directories need to be created by the user, as the directory is not created by running the code. In the future, this bug will be corrected.
-
-## Network
-
-
-You can view the network visualization by clicking the link below:
-
-[View Network of Madrid](https://carobs9.neocities.org/no_threshold)
